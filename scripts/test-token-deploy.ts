@@ -5,7 +5,7 @@
 // Runtime Environment's members available in the global scope.
 import { ethers } from "hardhat";
 
-async function main() {
+async function testTokenDeploy() {
   // Hardhat always runs the compile task when running scripts with its command
   // line interface.
   //
@@ -14,17 +14,17 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
-  const Greeter = await ethers.getContractFactory("Greeter");
-  const greeter = await Greeter.deploy("Hello, Hardhat!");
+  const TestToken = await ethers.getContractFactory("Greeter");
+  const testToken = await TestToken.deploy();
 
-  await greeter.deployed();
+  await testToken.deployed();
 
-  console.log("Greeter deployed to:", greeter.address);
+  console.log("Greeter deployed to:", testToken.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
-main().catch((error) => {
+testTokenDeploy().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
